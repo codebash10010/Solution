@@ -1,70 +1,21 @@
-# 🧩 Find the Duplicate Number
+# Find the Duplicate Number - Multiple Language Implementations
 
-**Problem Statement:**  
-Given an array of integers `nums` containing `n + 1` integers where each integer is in the range `[1, n]` inclusive, there is only one repeated number in `nums`. Return this repeated number.  
-You must solve the problem **without modifying the array** and using **only constant extra space**.
+This repository contains solutions for the "Find the Duplicate Number" problem implemented in **C++**, **Java**, **Python**, and **JavaScript** using Floyd's Tortoise and Hare (Cycle Detection) algorithm.
 
 ---
 
-## 📝 Input & Output
+## 📝 Problem Statement
 
-**Input:**  
-- `nums`: An array of integers of length `n + 1` where all integers are within `[1, n]`.
-- Exactly one integer appears more than once.
+Given an array `nums` containing `n + 1` integers where each integer is between `1` and `n` (inclusive), there is only one repeated number. Return this repeated number.
 
-**Output:**  
-- The single repeated integer.
+You must solve the problem without modifying the array and using only constant extra space.
 
 ---
 
-## ✅ Examples
+## 📌 Implementations
 
-**Example 1:**
-Input: nums = [1, 3, 4, 2, 2]
-Output: 2
-
-Explanation: Numbers are from 1 to 4. `2` appears twice.
-
-**Example 2:**
-Input: nums = [3, 1, 3, 4, 2]
-Output: 3
-
-Explanation: `3` appears twice.
-
-**Example 3:**
-Input: nums = [3, 3, 3, 3, 3]
-Output: 3
-
-Explanation: All elements are `3`.
-
----
-
-
----
-
-## ⚙ Constraints
-- Array length: `n + 1`
-- Elements: `[1, n]`
-- Only **one** repeated number
-- No array modification
-- **O(1)** extra space
-
----
-
-## 💡 Approach – Floyd's Cycle Detection (Tortoise and Hare)
-- Treat the array as a linked list where `nums[i]` points to `nums[nums[i]]`.
-- Phase 1: Use two pointers (`slow`, `fast`) moving at different speeds to find an intersection.
-- Phase 2: Reset `fast` to `nums[0]` and move both one step at a time until they meet again — the meeting point is the duplicate number.
-
-**Time Complexity:** O(n)  
-**Space Complexity:** O(1)
-
----
-
-## 💻 Code Implementations with Driver Code
-
-### C++
-
+### **C++**
+```cpp
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -99,8 +50,12 @@ int main() {
     cout << "Duplicate Number: " << sol.findDuplicate(nums) << endl;
     return 0;
 }
+```
 
-### Java
+---
+
+### **Java**
+```java
 import java.util.Scanner;
 
 public class Solution {
@@ -131,8 +86,12 @@ public class Solution {
         System.out.println("Duplicate Number: " + sol.findDuplicate(nums));
     }
 }
+```
 
-### Pyhton 
+---
+
+### **Python**
+```python
 class Solution:
     def findDuplicate(self, nums):
         slow, fast = nums[0], nums[0]
@@ -155,9 +114,12 @@ if __name__ == "__main__":
     nums = list(map(int, input("Enter the elements: ").split()))
     sol = Solution()
     print("Duplicate Number:", sol.findDuplicate(nums))
+```
 
-### JavaScript
+---
 
+### **JavaScript**
+```javascript
 function findDuplicate(nums) {
     let slow = nums[0], fast = nums[0];
     // Phase 1
@@ -187,17 +149,42 @@ readline.question("Enter number of elements: ", (n) => {
         readline.close();
     });
 });
-
-
-📎 Related
-Category: DSA → Arrays → Cycle Detection
-
-Difficulty: Medium
-
-
-⭐ If you find this project useful, don’t forget to star it!
+```
 
 ---
 
-If you want, I can also make this README **more visual with badges, table of contents, and clickable category links** so it looks like a polished open-source project on GitHub.  
-Do you want me to upgrade it with that professional touch?
+## 🚀 How to Run
+
+### **C++**
+```bash
+g++ solution.cpp -o solution
+./solution
+```
+
+### **Java**
+```bash
+javac Solution.java
+java Solution
+```
+
+### **Python**
+```bash
+python solution.py
+```
+
+### **JavaScript**
+```bash
+node solution.js
+```
+
+---
+
+## 📚 Algorithm Used
+We use **Floyd's Tortoise and Hare Algorithm**:
+1. **Phase 1:** Detect intersection point inside the cycle.
+2. **Phase 2:** Find the entrance to the cycle (duplicate number).
+
+**Time Complexity:** `O(n)`  
+**Space Complexity:** `O(1)`
+
+---
