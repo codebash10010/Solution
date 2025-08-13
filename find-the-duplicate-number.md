@@ -20,13 +20,25 @@ You must solve the problem **without modifying the array** and using **only cons
 ## ✅ Examples
 
 **Example 1:**
+Input: nums = [1, 3, 4, 2, 2]
+Output: 2
+
 Explanation: Numbers are from 1 to 4. `2` appears twice.
 
 **Example 2:**
+Input: nums = [3, 1, 3, 4, 2]
+Output: 3
+
 Explanation: `3` appears twice.
 
 **Example 3:**
+Input: nums = [3, 3, 3, 3, 3]
+Output: 3
+
 Explanation: All elements are `3`.
+
+---
+
 
 ---
 
@@ -49,6 +61,143 @@ Explanation: All elements are `3`.
 
 ---
 
-## 💻 Solutions
+## 💻 Code Implementations with Driver Code
 
 ### C++
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0], fast = nums[0];
+        // Phase 1
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        // Phase 2
+        fast = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    vector<int> nums(n);
+    cout << "Enter the elements:\n";
+    for (int i = 0; i < n; ++i) cin >> nums[i];
+    Solution sol;
+    cout << "Duplicate Number: " << sol.findDuplicate(nums) << endl;
+    return 0;
+}
+
+### Java
+import java.util.Scanner;
+
+public class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = nums[0], fast = nums[0];
+        // Phase 1
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        // Phase 2
+        fast = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; ++i) nums[i] = sc.nextInt();
+        Solution sol = new Solution();
+        System.out.println("Duplicate Number: " + sol.findDuplicate(nums));
+    }
+}
+
+### Pyhton 
+class Solution:
+    def findDuplicate(self, nums):
+        slow, fast = nums[0], nums[0]
+        # Phase 1
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+        # Phase 2
+        fast = nums[0]
+        while slow != fast:
+            slow = nums[slow]
+            fast = nums[fast]
+        return slow
+
+# Driver code
+if __name__ == "__main__":
+    n = int(input("Enter number of elements: "))
+    nums = list(map(int, input("Enter the elements: ").split()))
+    sol = Solution()
+    print("Duplicate Number:", sol.findDuplicate(nums))
+
+### JavaScript
+
+function findDuplicate(nums) {
+    let slow = nums[0], fast = nums[0];
+    // Phase 1
+    do {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow !== fast);
+    // Phase 2
+    fast = nums[0];
+    while (slow !== fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+    return slow;
+}
+
+// Driver code
+const readline = require("readline").createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+readline.question("Enter number of elements: ", (n) => {
+    readline.question("Enter the elements (space separated): ", (input) => {
+        const nums = input.split(" ").map(Number);
+        console.log("Duplicate Number:", findDuplicate(nums));
+        readline.close();
+    });
+});
+
+
+📎 Related
+Category: DSA → Arrays → Cycle Detection
+
+Difficulty: Medium
+
+
+⭐ If you find this project useful, don’t forget to star it!
+
+---
+
+If you want, I can also make this README **more visual with badges, table of contents, and clickable category links** so it looks like a polished open-source project on GitHub.  
+Do you want me to upgrade it with that professional touch?
