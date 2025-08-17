@@ -1,0 +1,125 @@
+# Using yt-dlp on macOS, Windows, and Linux
+
+yt-dlp is a powerful command-line tool for downloading videos from
+YouTube and many other platforms. Below is a complete guide to
+installing and using yt-dlp on macOS, Windows, and Linux, including how
+to play videos directly in the terminal or a media player.
+
+## 1. macOS
+
+\*\*Installation using Homebrew:\*\*
+
+1\. Install Homebrew (if not already installed):
+
+/bin/bash -c \"\$(curl -fsSL
+https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"
+
+2\. Install yt-dlp:
+
+brew install yt-dlp
+
+3\. Verify installation:
+
+yt-dlp \--version
+
+4\. Optional -- install mpv for video playback:
+
+brew install mpv
+
+You can now stream videos directly without saving them:
+
+mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+
+## 2. Windows
+
+\*\*Installation using Winget:\*\*
+
+1\. Open Command Prompt or PowerShell.
+
+2\. Install yt-dlp:
+
+winget install yt-dlp
+
+3\. Verify installation:
+
+yt-dlp \--version
+
+Optional -- install mpv for playback:
+
+winget install mpv
+
+Now you can stream videos directly:
+
+mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+
+## 3. Linux
+
+\*\*Installation using pip:\*\*
+
+1\. Update package manager:
+
+sudo apt update \# For Debian/Ubuntu
+
+2\. Install yt-dlp:
+
+sudo apt install yt-dlp
+
+Alternatively, install via pip:
+
+pip install -U yt-dlp
+
+3\. Verify installation:
+
+yt-dlp \--version
+
+Optional -- install mpv for playback:
+
+sudo apt install mpv
+
+Now you can stream videos directly:
+
+mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+
+## 4. Usage Examples
+
+\*\*Download a video:\*\*
+
+yt-dlp \"https://www.youtube.com/watch?v=VIDEO_ID\"
+
+\*\*Save to a specific folder:\*\*
+
+yt-dlp -o \"\~/Downloads/%(title)s.%(ext)s\"
+\"https://www.youtube.com/watch?v=VIDEO_ID\"
+
+\*\*Stream without saving (requires mpv):\*\*
+
+mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+
+\*\*Play a downloaded file (handle special characters):\*\*
+
+mpv \"filename_with\_\[brackets\].webm\"
+
+## 5. Supported Platforms
+
+yt-dlp supports downloading videos and audio from hundreds of websites.
+Here are some popular supported platforms:
+
+\- Social Media: Facebook, Instagram, Twitter/X, TikTok, Reddit\
+- Streaming Sites: Vimeo, Dailymotion, Bilibili\
+- Music Platforms: SoundCloud, Bandcamp\
+- News & TV: BBC, CNN, NHK, and more\
+- Adult content: Supported (disabled in safe mode)
+
+Note: Some platforms with DRM protection (e.g., Netflix, Amazon Prime,
+Disney+, Hotstar) are not supported because bypassing DRM is illegal.
+
+To check if a specific site is supported, run:
+
+yt-dlp \--list-extractors \| grep -i \"site-name\"
+
+Example for TikTok:
+
+yt-dlp \--list-extractors \| grep -i tiktok
+
+For paid or login-required sites, you may need to pass cookies:\
+yt-dlp \--cookies cookies.txt \"VIDEO_URL\"
