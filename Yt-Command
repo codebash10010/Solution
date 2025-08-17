@@ -1,125 +1,128 @@
-# Using yt-dlp on macOS, Windows, and Linux
+# 🎥 yt-dlp Full Guide (Windows | macOS | Linux)
 
-yt-dlp is a powerful command-line tool for downloading videos from
-YouTube and many other platforms. Below is a complete guide to
-installing and using yt-dlp on macOS, Windows, and Linux, including how
-to play videos directly in the terminal or a media player.
+yt-dlp is a powerful open-source tool for downloading videos and audio from YouTube and many other sites.  
+This guide provides **detailed setup and usage instructions** for **Windows, macOS, and Linux**.
 
-## 1. macOS
+---
 
-\*\*Installation using Homebrew:\*\*
+## 📑 Table of Contents
+- [Windows](#-windows)
+  - [Installation](#installation-windows)
+  - [Usage](#usage-windows)
+- [macOS](#-macos)
+  - [Installation](#installation-macos)
+  - [Usage](#usage-macos)
+- [Linux](#-linux)
+  - [Installation](#installation-linux)
+  - [Usage](#usage-linux)
+- [Common Commands](#-common-commands)
+- [Updating yt-dlp](#-updating-yt-dlp)
+- [Troubleshooting](#-troubleshooting)
+- [Thanks](#-thanks)
 
-1\. Install Homebrew (if not already installed):
+---
 
-/bin/bash -c \"\$(curl -fsSL
-https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"
+## 🖥️ Windows
 
-2\. Install yt-dlp:
+### Installation (Windows)
+1. **Download the executable**  
+   - Go to 👉 [yt-dlp Releases](https://github.com/yt-dlp/yt-dlp/releases/latest)  
+   - Download `yt-dlp.exe`
 
-brew install yt-dlp
+2. **Place the file**  
+   - Put `yt-dlp.exe` in a folder, e.g., `C:\yt-dlp`
 
-3\. Verify installation:
+3. **Add to PATH (optional but recommended)**  
+   - Search "Environment Variables" in Windows.  
+   - Edit `Path` → Add `C:\yt-dlp`.  
+   - Now you can run `yt-dlp` from any directory.
 
-yt-dlp \--version
+4. **Alternative: Install with pip**
+   ```bash
+   pip install -U yt-dlp
 
-4\. Optional -- install mpv for video playback:
 
-brew install mpv
+###Usage (Windows)###
 
-You can now stream videos directly without saving them:
+Open Command Prompt (cmd) or PowerShell
 
-mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+Run commands like: yt-dlp https://youtube.com/watch?v=abcd1234
 
-## 2. Windows
 
-\*\*Installation using Winget:\*\*
+###🍏 macOS###
+Installation (macOS)
 
-1\. Open Command Prompt or PowerShell.
+Using Homebrew (Recommended)
 
-2\. Install yt-dlp:
+Run commands like:  brew install yt-dlp
 
-winget install yt-dlp
+Using pip
 
-3\. Verify installation:
+Run commands like: pip3 install -U yt-dlp
 
-yt-dlp \--version
+Manual binary installation
 
-Optional -- install mpv for playback:
+Run commands like:  sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
+-o /usr/local/bin/yt-dlp
+sudo chmod a+rx /usr/local/bin/yt-dlp
 
-winget install mpv
 
-Now you can stream videos directly:
+Usage (macOS)
 
-mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+Open Terminal
 
-## 3. Linux
+Run:yt-dlp "https://youtube.com/watch?v=abcd1234"
 
-\*\*Installation using pip:\*\*
 
-1\. Update package manager:
 
-sudo apt update \# For Debian/Ubuntu
+###🐧 Linux###
+Installation (Linux)
 
-2\. Install yt-dlp:
+Using pip
 
-sudo apt install yt-dlp
+Run commands like: pip install -U yt-dlp
 
-Alternatively, install via pip:
 
-pip install -U yt-dlp
+Download binary
 
-3\. Verify installation:
+Run commands like:sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp
+sudo chmod a+rx /usr/local/bin/yt-dlp
 
-yt-dlp \--version
+Arch Linux (AUR)
 
-Optional -- install mpv for playback:
+Run commands like: yay -S yt-dlp
 
-sudo apt install mpv
+Usage (Linux)
 
-Now you can stream videos directly:
+Open Terminal
 
-mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+Run:yt-dlp https://youtube.com/watch?v=abcd1234
 
-## 4. Usage Examples
 
-\*\*Download a video:\*\*
+###⚡ Common Commands###
+```
+Download video
+Run:yt-dlp <video_url>
 
-yt-dlp \"https://www.youtube.com/watch?v=VIDEO_ID\"
+Download audio only (mp3)
+Run:yt-dlp -x --audio-format mp3 <video_url>
 
-\*\*Save to a specific folder:\*\*
+Custom output filename
+Run:yt-dlp -o "%(title)s.%(ext)s" <video_url>
 
-yt-dlp -o \"\~/Downloads/%(title)s.%(ext)s\"
-\"https://www.youtube.com/watch?v=VIDEO_ID\"
+Download playlist
+Run:yt-dlp <playlist_url>
 
-\*\*Stream without saving (requires mpv):\*\*
+Download specific items from playlist
+Run:yt-dlp <playlist_url> --playlist-items 1,3,5
 
-mpv \"https://www.youtube.com/watch?v=VIDEO_ID\"
+Download with subtitles
+Run:yt-dlp --write-subs --sub-lang en <url>
 
-\*\*Play a downloaded file (handle special characters):\*\*
+Limit download speed
+Run:yt-dlp --limit-rate 500K <url>
 
-mpv \"filename_with\_\[brackets\].webm\"
-
-## 5. Supported Platforms
-
-yt-dlp supports downloading videos and audio from hundreds of websites.
-Here are some popular supported platforms:
-
-\- Social Media: Facebook, Instagram, Twitter/X, TikTok, Reddit\
-- Streaming Sites: Vimeo, Dailymotion, Bilibili\
-- Music Platforms: SoundCloud, Bandcamp\
-- News & TV: BBC, CNN, NHK, and more\
-- Adult content: Supported (disabled in safe mode)
-
-Note: Some platforms with DRM protection (e.g., Netflix, Amazon Prime,
-Disney+, Hotstar) are not supported because bypassing DRM is illegal.
-
-To check if a specific site is supported, run:
-
-yt-dlp \--list-extractors \| grep -i \"site-name\"
-
-Example for TikTok:
-
-yt-dlp \--list-extractors \| grep -i tiktok
-
-For paid or login-required sites, you may need to pass cookies:\
-yt-dlp \--cookies cookies.txt \"VIDEO_URL\"
+Resume interrupted download
+Run:yt-dlp -c <url>
+```
+----
