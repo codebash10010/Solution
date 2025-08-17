@@ -1,5 +1,7 @@
 # 🎥 yt-dlp Full Guide (Windows | macOS | Linux)
 
+📺 Also, check out my YouTube channel for more tutorials: Codebash YouTube
+
 yt-dlp is a powerful open-source tool for downloading videos and audio from YouTube and many other sites.\
 This guide provides **detailed setup and usage instructions** for **Windows, macOS, and Linux**.
 
